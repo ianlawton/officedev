@@ -1,0 +1,832 @@
+application/vnd.microsoft.card.adaptive: {
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "color": "accent",
+      "size": "large",
+      "text": "👋 Hi there, I'm Polly",
+      "wrap": true,
+      "type": "TextBlock"
+    },
+    {
+      "text": "A teammate of yours recently added me to help your team create and manage polls.",
+      "wrap": true,
+      "type": "TextBlock"
+    }
+  ],
+  "actions": [
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-1.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "To create a poll in this channel, simply activate the Polly compose extension via the (···) menu below the message input box.",
+            "wrap": true,
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Create a Poll",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-2.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "Pin Polly to your compose box to access it from any of your chats or teams.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Pin Polly",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-3.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "You can close or delete polls via the \"View My Polls\" section when activating Polly from the channel where you posted the poll.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Manage Polls",
+      "type": "Action.ShowCard"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
+app.component.ts:134 tabReference: null
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "summary": "Incoming Webhook is now connected to Test team",
+  "text": "",
+  "sections": [
+    {
+      "text": "",
+      "title": "",
+      "activityTitle": "",
+      "activitySubtitle": "<p>Ian Lawton has set up a connection to Incoming Webhook so group members will be notified for this configuration with name <strong>UX News Broadcast</strong></p>",
+      "activityText": "",
+      "markdown": true,
+      "startGroup": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "30020c51-36e8-4474-9b98-a092ba6c2b51",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "297e72e3-94a1-48fd-98a7-14fd2c7b23d7",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "746b6a9f-07d9-443a-aad5-da931d01acd0",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "e4331106-f6f8-4c72-bf3b-3384b77753ca",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "d521557d-6590-4789-8912-dc37563d62a4",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "5b09c25d-5d55-4850-a159-e4c63cea07cc",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.card.adaptive: {
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "color": "accent",
+      "size": "large",
+      "text": "👋 Hi there, I'm Polly",
+      "wrap": true,
+      "type": "TextBlock"
+    },
+    {
+      "text": "A teammate of yours recently added me to help your team create and manage polls.",
+      "wrap": true,
+      "type": "TextBlock"
+    }
+  ],
+  "actions": [
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-1.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "To create a poll in this channel, simply activate the Polly compose extension via the (···) menu below the message input box.",
+            "wrap": true,
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Create a Poll",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-2.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "Pin Polly to your compose box to access it from any of your chats or teams.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Pin Polly",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-3.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "You can close or delete polls via the \"View My Polls\" section when activating Polly from the channel where you posted the poll.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Manage Polls",
+      "type": "Action.ShowCard"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
+app.component.ts:134 tabReference: null
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "summary": "Incoming Webhook is now connected to Test team",
+  "text": "",
+  "sections": [
+    {
+      "text": "",
+      "title": "",
+      "activityTitle": "",
+      "activitySubtitle": "<p>Ian Lawton has set up a connection to Incoming Webhook so group members will be notified for this configuration with name <strong>UX News Broadcast</strong></p>",
+      "activityText": "",
+      "markdown": true,
+      "startGroup": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "30020c51-36e8-4474-9b98-a092ba6c2b51",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "297e72e3-94a1-48fd-98a7-14fd2c7b23d7",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "746b6a9f-07d9-443a-aad5-da931d01acd0",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "e4331106-f6f8-4c72-bf3b-3384b77753ca",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "d521557d-6590-4789-8912-dc37563d62a4",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "5b09c25d-5d55-4850-a159-e4c63cea07cc",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.card.adaptive: {
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "color": "accent",
+      "size": "large",
+      "text": "👋 Hi there, I'm Polly",
+      "wrap": true,
+      "type": "TextBlock"
+    },
+    {
+      "text": "A teammate of yours recently added me to help your team create and manage polls.",
+      "wrap": true,
+      "type": "TextBlock"
+    }
+  ],
+  "actions": [
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-1.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "To create a poll in this channel, simply activate the Polly compose extension via the (···) menu below the message input box.",
+            "wrap": true,
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Create a Poll",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-2.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "Pin Polly to your compose box to access it from any of your chats or teams.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Pin Polly",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-3.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "You can close or delete polls via the \"View My Polls\" section when activating Polly from the channel where you posted the poll.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Manage Polls",
+      "type": "Action.ShowCard"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
+app.component.ts:134 tabReference: null
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "summary": "Incoming Webhook is now connected to Test team",
+  "text": "",
+  "sections": [
+    {
+      "text": "",
+      "title": "",
+      "activityTitle": "",
+      "activitySubtitle": "<p>Ian Lawton has set up a connection to Incoming Webhook so group members will be notified for this configuration with name <strong>UX News Broadcast</strong></p>",
+      "activityText": "",
+      "markdown": true,
+      "startGroup": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "30020c51-36e8-4474-9b98-a092ba6c2b51",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "297e72e3-94a1-48fd-98a7-14fd2c7b23d7",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "746b6a9f-07d9-443a-aad5-da931d01acd0",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "e4331106-f6f8-4c72-bf3b-3384b77753ca",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "d521557d-6590-4789-8912-dc37563d62a4",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "5b09c25d-5d55-4850-a159-e4c63cea07cc",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.card.adaptive: {
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "color": "accent",
+      "size": "large",
+      "text": "👋 Hi there, I'm Polly",
+      "wrap": true,
+      "type": "TextBlock"
+    },
+    {
+      "text": "A teammate of yours recently added me to help your team create and manage polls.",
+      "wrap": true,
+      "type": "TextBlock"
+    }
+  ],
+  "actions": [
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-1.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "To create a poll in this channel, simply activate the Polly compose extension via the (···) menu below the message input box.",
+            "wrap": true,
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Create a Poll",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-2.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "Pin Polly to your compose box to access it from any of your chats or teams.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Pin Polly",
+      "type": "Action.ShowCard"
+    },
+    {
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "url": "https://urlp.asm.skype.com/v1/url/content?url=https%3a%2f%2fstatic.polly.ai%2fimg%2fmsteams%2fwelcome-carousel-3.gif",
+            "height": "auto",
+            "spacing": "medium",
+            "type": "Image"
+          },
+          {
+            "text": "You can close or delete polls via the \"View My Polls\" section when activating Polly from the channel where you posted the poll.",
+            "wrap": true,
+            "spacing": "medium",
+            "type": "TextBlock"
+          }
+        ],
+        "actions": [
+          {
+            "url": "https://www.polly.ai/help/microsoft-teams",
+            "title": "Learn More",
+            "type": "Action.OpenUrl"
+          }
+        ]
+      },
+      "title": "Manage Polls",
+      "type": "Action.ShowCard"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
+app.component.ts:134 tabReference: null
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "summary": "Incoming Webhook is now connected to Test team",
+  "text": "",
+  "sections": [
+    {
+      "text": "",
+      "title": "",
+      "activityTitle": "",
+      "activitySubtitle": "<p>Ian Lawton has set up a connection to Incoming Webhook so group members will be notified for this configuration with name <strong>UX News Broadcast</strong></p>",
+      "activityText": "",
+      "markdown": true,
+      "startGroup": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "30020c51-36e8-4474-9b98-a092ba6c2b51",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "297e72e3-94a1-48fd-98a7-14fd2c7b23d7",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "746b6a9f-07d9-443a-aad5-da931d01acd0",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}
+app.component.ts:134 application/vnd.microsoft.teams.card.o365connector: {
+  "text": "<p>Click <strong>Learn More</strong> to learn more about Actionable Messages!</p>",
+  "title": "Visit the Outlook Dev Portal",
+  "themeColor": "0072C6",
+  "potentialAction": [
+    {
+      "inputs": [
+        {
+          "isMultiline": true,
+          "@type": "TextInput",
+          "id": "feedback",
+          "title": "Let us know what you think about Actionable Messages",
+          "isRequired": false
+        }
+      ],
+      "actions": [
+        {
+          "hideCardOnInvoke": false,
+          "target": "http://...",
+          "@type": "HttpPOST",
+          "@id": "e4331106-f6f8-4c72-bf3b-3384b77753ca",
+          "name": "Send Feedback",
+          "isPrimaryAction": false
+        }
+      ],
+      "@type": "ActionCard",
+      "@id": "d521557d-6590-4789-8912-dc37563d62a4",
+      "name": "Send Feedback",
+      "isPrimaryAction": false
+    },
+    {
+      "targets": [
+        {
+          "os": "default",
+          "uri": "https://docs.microsoft.com/outlook/actionable-messages"
+        }
+      ],
+      "@type": "OpenUri",
+      "@id": "5b09c25d-5d55-4850-a159-e4c63cea07cc",
+      "name": "Learn More",
+      "isPrimaryAction": false
+    }
+  ]
+}

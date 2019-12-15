@@ -1,0 +1,132 @@
+<div
+  *ngIf="selectingArea"
+  class="selecting"
+  (mousedown)="startSelect($event)"
+  (mouseup)="endSelect($event)"></div>
+
+<mat-toolbar color="primary">
+  <span>MS Graph API PoC</span>
+
+  <div class="spacer"></div>
+
+  <ng-container *ngIf="!(service.user$ | async)">
+    <button (click)="signIn()" mat-button>Sign in {{service.user$ | async}}</button>
+  </ng-container>
+
+  <ng-container *ngIf="service.user$ | async as user">
+    <div class="user">
+      <mat-icon>
+        account_circle
+      </mat-icon>
+      Welcome: {{user.displayName}}
+      <button mat-raised-button (click)="singOut()">Sign out</button>
+    </div>
+  </ng-container>
+</mat-toolbar>
+
+<h2 *ngIf="!(service.user$ | async)">You are not logged in</h2>
+
+<div class="content" *ngIf="service.user$ | async">
+  <div class="side">
+    <mat-list>
+      <h3 mat-subheader>Teams</h3>
+      <mat-list-item *ngFor="let c of teams" (click)="enterTeam(c)" [ngClass]="{'active-team': c === team}">
+        <mat-icon mat-list-icon>group</mat-icon>
+        <h4 mat-line>{{c.displayName}}</h4>
+        <p mat-line> {{c.description}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader *ngIf="channels.length">Channels</h3>
+      <mat-list-item *ngFor="let c of channels" (click)="enterChannel(c)" [ngClass]="{'active-team': c === channel}">
+          <mat-icon mat-list-icon>chat</mat-icon>
+          <h4 mat-line>{{c.displayName}}</h4>
+          <p mat-line> {{c.description}} </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="big" *ngIf="messages" id="big">
+    <h3>Conversations</h3>
+
+    <ng-container *ngFor="let m of messages">
+      <mat-card>
+        <div class="info">
+          <strong *ngIf="m.from.user">{{m.from.user.displayName}}</strong>
+          <strong *ngIf="!m.from.user">Unknown</strong>
+          <span>{{m.createdDateTime | date:'short'}}</span>
+          <div class="spacer"></div>
+        </div>
+        <div class="message-body">
+            <ng-container *ngIf="m.body.contentType === 'text' || (m.body.contentType === 'html' && !m.attachments.length) "><div [innerHTML]="m.body.content"></div></ng-container>
+            <ng-container *ngIf="m.body.contentType === 'html' && m.attachments.length > 0">
+              <ng-container *ngFor="let a of m.attachments">
+                <div [ngSwitch]="a.contentType">
+                  <div *ngSwitchCase="'application/vnd.microsoft.card.thumbnail'">
+                    <div class="teams-card">
+                      <div *ngIf="inJSON(a.content).images"class="thumbnail">
+                        <img [src]="inJSON(a.content).images[0].url | safe" alt="">
+                      </div>
+                      <div [innerHTML]="inJSON(a.content).title"></div>
+                      <div [innerHTML]="inJSON(a.content).subtitle"></div>
+                      <div [innerHTML]="inJSON(a.content).text"></div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'application/vnd.microsoft.card.adaptive'">
+                    <div>Adaptive:</div>
+                    <div [innerHTML]="parseCard(a.content)"></div>
+                  </div>
+                  <div *ngSwitchCase="'application/vnd.microsoft.teams.card.o365connector'">
+                    <div class="teams-card">
+                        <div [innerHTML]="inJSON(a.content).title"></div>
+                        <div [innerHTML]="inJSON(a.content).text"></div>
+                      </div>
+                  </div>
+                  <div *ngSwitchDefault>{{a.content}}</div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+          </div>
+        <button mat-button (click)="toQuote(m)">
+          <mat-icon>reply</mat-icon>
+        </button>
+        <div class="replies" *ngIf="replies[m.id].length">
+          <div class="reply" *ngFor="let r of replies[m.id]">
+            <div class="info">
+              <strong>{{r.from.user.displayName}}</strong>
+              <span>{{r.createdDateTime | date:'short'}}</span>
+              <div class="spacer"></div>
+            </div>
+            <div class="message-body">
+              <ng-container *ngIf="m.body.contentType === 'text'">{{r.body.content}}</ng-container>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+
+<div class="content" *ngIf="channel">
+  <form (submit)="send($event)">
+    <div class="quote" *ngIf="quote">
+      {{quote.body.content}}
+    </div>
+
+    <mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
+    <button mat-button (click)="clearScreenshot()" *ngIf="selectedArea.length">Clear</button>
+    <span class="ufiles" *ngIf="uploadedFile">
+      <span class="file">Uploaded</span>
+      <button mat-button (click)="uploadedFile = undefined">Delete</button>
+    </span>
+
+    <div class="input">
+      <input type="text" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" placeholder="Type a new message">
+      <button mat-raised-button color="primary" [disabled]="message.length === 0">
+        <mat-icon>send</mat-icon>
+      </button>
+      <button mat-raised-button (click)="selectArea()" type="button">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

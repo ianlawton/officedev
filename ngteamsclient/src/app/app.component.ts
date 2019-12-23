@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { MatSnackBar } from '@angular/material';
 import html2canvas from 'html2canvas';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AdaptiveCard, HostConfig } from 'adaptivecards';
+
 
 /*
   Teams API documentation
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   channel: any;
   messages: any;
   replies = {};
-  adaptiveCard: AdaptiveCard;
 
   message = '';
   quote: any;
@@ -40,16 +39,7 @@ export class AppComponent implements OnInit {
     private sanitizer: DomSanitizer,
     public service: AppService,
     private snack: MatSnackBar,
-  )
-  {
-    this.adaptiveCard = new AdaptiveCard();
-   /* this.adaptiveCard.hostConfig = new HostConfig({
-      fontFamily: 'Segoe UI, Helvetica Neue, sans-serif'
-      // More host config options
-    });*/
-    // this.adaptiveCard.onExecuteAction(action => { alert (action); });
-
-  }
+  ){}
 
   ngOnInit() {
     this.service.user$.subscribe(user => {
@@ -76,76 +66,6 @@ export class AppComponent implements OnInit {
 
   async enterChannel(channel) {
     this.channel = channel;
-
-    const { messages, replies } = await this.service.getMessages(this.team.id, channel.id);
-    this.messages = messages;
-    this.replies = replies;
-
-    console.log('messages', this.messages);
-    console.log('replies', this.replies);
-  //  this.messages.forEach(m => {
-  //    console.log(m.body.contentType);
-  //  });
-
-    setTimeout(() => {
-      const big = document.querySelector('#big');
-      big.scrollTo(0, big.scrollHeight);
-    }, 100);
-  }
-
-  async send(e: Event) {
-    e.preventDefault();
-    console.log('Attachments', this.uploadedFile);
-
-    if (this.uploadedFile) {
-      const msg = {
-        file: this.uploadedFile,
-        message: this.message
-      }
-
-      const thread = await this.service.sendMessage(this.team.id, this.channel.id, msg);
-      console.log('Uploaded media', thread);
-      this.uploadedFile = undefined;
-      this.message = '';
-      this.messages = [...this.messages, thread];
-      this.replies[thread.id] = [];
-      return;
-    }
-
-    if (this.quote) {
-      const reply = await this.service.sendMessage(this.team.id, this.channel.id, this.message, this.quote.id);
-      this.replies[reply.replyToId].push(reply);
-      this.quote = null;
-    } else {
-      console.log('creating new message thread..');
-      const thread = await this.service.sendMessage(this.team.id, this.channel.id, this.message);
-      this.messages = [...this.messages, thread];
-      this.replies[thread.id] = [];
-    }
-
-    this.message = '';
-    setTimeout(() => {
-      const big = document.querySelector('#big');
-      big.scrollTo(0, big.scrollHeight);
-    }, 100);
-  }
-
-  inJSON(json) {
-    return JSON.parse(json);
-  }
-
-
-  parseCard(json) {
-    console.log(json);
-    // Parse the card payload from the message
-    this.adaptiveCard.parse(this.inJSON(json));
-    const htmlText = this.adaptiveCard.render();
-    return htmlText.innerHTML;
-
-  }
-
-  parseActionCard(json){
-    return '<b>MS Outlook Card</b>';
   }
 
   toQuote(message) {

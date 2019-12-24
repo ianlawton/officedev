@@ -4,8 +4,7 @@
     <mat-card>
       <app-message-reactions [reactions]="m.reactions"></app-message-reactions>
       <div class="info">
-        <!-- <app-profile-picture [upn]="m.from.user ? m.from.user.id : null"></app-profile-picture> -->
-        <mgt-person person-query="me" person-card="hover"></mgt-person>
+        <app-profile-picture [upn]="m.from.user ? m.from.user.id : 'a71c79e8-cc00-4bf2-9724-a34ee37242a2'"></app-profile-picture>
         <span *ngIf="m.from.user">{{m.from.user.displayName}}</span>
         <span *ngIf="!m.from.user && m.from.application">{{m.from.application.displayName}}</span>
         <span *ngIf="!m.from.user && !m.from.application">Unknown</span>

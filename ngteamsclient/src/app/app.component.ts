@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from './app.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import html2canvas from 'html2canvas';
 import { DomSanitizer } from '@angular/platform-browser';
 

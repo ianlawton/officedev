@@ -2,7 +2,7 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { Client, BatchRequestStep, BatchRequestContent, OneDriveLargeFileUploadTask, ResponseType } from '@microsoft/microsoft-graph-client';
 import { OAuthSettings } from './oauth';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { stringToCssColor } from 'adaptivecards';
@@ -55,7 +55,7 @@ export class AppService {
     if (result) {
       const user = await this.getUser();
       console.log('user', user);
-      this.snack('Welcome')
+      this.snack('Welcome');
     }
   }
 
@@ -88,7 +88,7 @@ export class AppService {
 
   signOut(): void {
     this.msalService.logout();
-    this.user$.next(undefined)
+    this.user$.next(undefined);
     this.authenticated = false;
   }
 
@@ -131,7 +131,7 @@ export class AppService {
       batchRequests.push({
         id: m.id,
         request: q
-      } as BatchRequestStep)
+      } as BatchRequestStep);
     });
 
     const batchRequest = new BatchRequestContent(batchRequests);
@@ -145,7 +145,7 @@ export class AppService {
     const replies = {};
     repliesResponse.responses.forEach(req => {
       replies[req.id] = req.body.value;
-    })
+    });
 
     return {
       messages: messages.value.reverse(),
@@ -181,17 +181,28 @@ export class AppService {
         .responseType(ResponseType.BLOB)
         .get();
 
-      return this.createImageFromBlob(blobData);
-    } catch { return null; }
+      return blobData;
+
+    } catch { return 'Could be an error'; }
   }
 
-  createImageFromBlob(blob: Blob) {
-    const reader = new FileReader();
-    const binaryString = reader.readAsDataURL(blob);
-    reader.onload = (event: any) => {
-      console.log(event.target.result);
-      return (event.target.result);
-    };
+  async createImageFromBlob(blob: Blob): Promise<any>  {
+    try {
+      const contentBuffer = await this.readFileAsync(blob);
+      return contentBuffer;
+    } catch { return null; }
+
+  }
+
+  readFileAsync(blob: Blob): Promise<any> {
+      return new Promise<any>((resolve, reject) => {
+        const reader = new FileReader();
+        const binaryString = reader.readAsDataURL(blob);
+        reader.onload = (event: any) => {
+          resolve (event.target.result);
+        };
+    });
+
   }
 
   createMessageObj(content) {
@@ -207,7 +218,7 @@ export class AppService {
             "value": "/"
           }
         ]
-      }
+      };
 
       let contentUrl = content;
       let thumbnail = '';
@@ -228,7 +239,7 @@ export class AppService {
               url: content.file.webUrl
             }
           ]
-        }
+        };
 
         contentUrl = content.file.webUrl;
       }
@@ -248,12 +259,12 @@ export class AppService {
                 "thumbnailUrl": 'https://hu.wikipedia.org/wiki/Johannes_Kepler#/media/F%C3%A1jl:Johannes_Kepler_1610.jpg'
             }
         ]
-      }
+      };
     }
 
     return {
       body: { content }
-    }
+    };
   }
 
   async fileUpload(file) {

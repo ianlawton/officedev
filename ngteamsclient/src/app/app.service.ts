@@ -1,10 +1,11 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
-import { Client, BatchRequestStep, BatchRequestContent, OneDriveLargeFileUploadTask } from '@microsoft/microsoft-graph-client';
+import { Client, BatchRequestStep, BatchRequestContent, OneDriveLargeFileUploadTask, ResponseType } from '@microsoft/microsoft-graph-client';
 import { OAuthSettings } from './oauth';
 import { MatSnackBar } from '@angular/material';
 import { BehaviorSubject } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { stringToCssColor } from 'adaptivecards';
 
 export class User {
   displayName: string;
@@ -35,7 +36,7 @@ export class AppService {
     private msalService: MsalService
   ) {
     this.authenticated = this.msalService.getUser() != null;
-    
+
     this.getUser().then((user) => {
       if (user) {
         this.user$.next(user);
@@ -170,6 +171,29 @@ export class AppService {
     return res;
   }
 
+  async getProfilePicture(upn?: string): Promise<any> {
+    // https://graph.microsoft.com/users/{id | userPrincipalName}/photo/$value
+    const url = `/users/${upn}/photo/$value`;
+
+    try {
+      const blobData = await this.graphClient
+        .api(url)
+        .responseType(ResponseType.BLOB)
+        .get();
+
+      return this.createImageFromBlob(blobData);
+    } catch { return null; }
+  }
+
+  createImageFromBlob(blob: Blob) {
+    const reader = new FileReader();
+    const binaryString = reader.readAsDataURL(blob);
+    reader.onload = (event: any) => {
+      console.log(event.target.result);
+      return (event.target.result);
+    };
+  }
+
   createMessageObj(content) {
     if ((typeof content === 'string' && content.startsWith('http://kepler') || typeof content !== 'string')) {
       let card: any = {
@@ -242,7 +266,7 @@ export class AppService {
       console.error(error);
     }
   }
-  
+
   async largeFileUpload(file) {
     try {
       let options = {

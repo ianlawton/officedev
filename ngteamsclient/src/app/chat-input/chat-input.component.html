@@ -1,0 +1,24 @@
+<div class="inputContent" *ngIf="channel">
+  <form (submit)="send($event)">
+    <div class="quote" *ngIf="quote">
+      {{quote.body.content}}
+    </div>
+
+    <mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
+    <button mat-button (click)="clearScreenshot()" *ngIf="selectedArea.length">Clear</button>
+    <span class="ufiles" *ngIf="uploadedFile">
+      <span class="file">Uploaded</span>
+      <button mat-button (click)="uploadedFile = undefined">Delete</button>
+    </span>
+
+    <div class="input">
+      <input type="text" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" placeholder="Type a new message">
+      <button mat-raised-button color="primary" [disabled]="message.length === 0">
+        <mat-icon>send</mat-icon>
+      </button>
+      <button mat-raised-button (click)="selectArea()" type="button">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

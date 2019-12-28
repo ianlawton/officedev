@@ -12,12 +12,6 @@ import { MessageReactionsComponent } from '../message-reactions/message-reaction
 
 
 export class ChatClientComponent implements OnInit {
-  @Input() team: any;
-  @Input() channel: any;
-  messages: any;
-  replies = {};
-  reactions = {}; //emojis
-  adaptiveCard: AdaptiveCard;
 
 
   constructor(public service: AppService, private _sharedService: ChatSharedService) {
@@ -40,6 +34,12 @@ export class ChatClientComponent implements OnInit {
 
 
   }
+  @Input() team: any;
+  @Input() channel: any;
+  messages: any;
+  replies = {};
+  reactions = {}; //emojis
+  adaptiveCard: AdaptiveCard;
 
   ngOnInit() {
 

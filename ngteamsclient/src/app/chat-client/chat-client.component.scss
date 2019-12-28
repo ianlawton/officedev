@@ -34,8 +34,16 @@
             color:#706c68;
             margin-left: 10px;
         }
+
     }
 }
+
+.avatar {
+    margin: 5px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    }
 
 .reply{
 
@@ -54,6 +62,13 @@
         {
             color:#706c68;
             margin-left: 10px;
+        }
+
+        img.avatar {
+            margin: 2px;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
         }
     }
 }

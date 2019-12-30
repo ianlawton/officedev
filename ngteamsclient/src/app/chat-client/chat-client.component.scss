@@ -1,5 +1,5 @@
 
-
+/*
 .big {
     flex: 1;
     padding: 0 80px;
@@ -80,4 +80,58 @@
     max-width: 80%;
     padding: 20px;
     border-top: 2px solid #ff4081;
+}
+*/
+
+
+/*! CSS Used from: https://cdn01.gitter.im/_s/b962b3f01/styles/router-nli-chat.css */
+a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+a:hover,a:active{outline:0;}
+img{max-width:100%;max-height:370px;height:auto;border:0;-ms-interpolation-mode:bicubic;}
+::-moz-placeholder{color:#999;}
+::-webkit-input-placeholder{color:#999;}
+::-moz-placeholder{color:#999;}
+::-webkit-input-placeholder{color:#999;}
+a{text-decoration:none;color:#333;}
+a:hover{text-decoration:underline;}
+[class*=" icon-"]:before{font-family:fontello;font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.icon-check:before{content:'\e804';}
+.icon-ellipsis:before{content:'\e80b';}
+img{max-width:100%;}
+.chat-item{-webkit-transition:background-color .2s linear;transition:background-color .2s linear;background-color:transparent;-webkit-tap-highlight-color:transparent;}
+body:not(.mobile) .chat-item:not(.syncerror):hover{background-color:rgba(240,240,240,.3);}
+.chat-item.burstStart{padding-bottom:.2em;}
+.chat-item.burstStart .chat-item__aside{margin-top:6px;}
+.chat-item.burstStart .chat-item__actions{margin-top:2px;}
+.chat-item__aside{float:left;margin-top:2px;}
+.chat-item__actions{float:right;text-align:right;width:40px;}
+.chat-item__container{-webkit-box-sizing:border-box;box-sizing:border-box;border-right:2px solid transparent;margin:.4em 12px 0;padding-left:22px;-webkit-transition-delay:1s;transition-delay:1s;-webkit-transition:1s border linear,2s background-color linear;transition:1s border linear,2s background-color linear;clear:both;}
+.chat-item__from{vertical-align:middle;display:inline;cursor:pointer;margin-top:2px;opacity:.7;}
+.chat-item__username{vertical-align:middle;display:inline;cursor:pointer;margin-top:2px;opacity:.5;}
+.chat-item__time{vertical-align:middle;display:inline;margin-left:8px;margin-top:2px;color:rgba(170,170,170,.7);}
+.chat-item__time,.chat-item__time:hover{text-decoration:none;}
+.chat-item:hover .chat-item__time{color:#aaa;}
+.chat-item__icon{visibility:hidden;color:transparent;cursor:pointer;-webkit-transition:visibility .2s ease,color .2s ease;transition:visibility .2s ease,color .2s ease;}
+.chat-item__icon:hover,.chat-item:hover .chat-item__icon:hover{color:#3498db;}
+.chat-item:hover .chat-item__icon{visibility:visible;color:#aaa;}
+.chat-item__icon--read{float:left;font-size:.7em;margin-top:3px;}
+.chat-item__icon--read,.chat-item:hover .chat-item__icon--read{visibility:hidden;color:transparent;}
+.chat-item:hover .chat-item__icon--read-by-some{visibility:visible;color:#aaa;}
+.chat-item__text{margin:0;padding:0;overflow-x:auto;-ms-touch-action:pan-y;touch-action:pan-y;word-wrap:break-word;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;color:#000;}
+.chat-item__content{margin-left:52px;margin-right:44px;vertical-align:top;min-height:1.5em;}
+.trpDisplayPicture{display:inline-block;text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-repeat:no-repeat;border-bottom:2px solid transparent;}
+.trpDisplayPicture .avatar__image{width:30px;max-width:30px;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;height:30px;border:none;background-color:#eee;}
+.avatar-s{position:relative;height:30px;width:30px;border-radius:4px;background-size:cover;}
+/*! CSS Used fontfaces */
+@font-face{font-family:fontello;src:url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.eot?2600305);src:url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.eot?2600305#iefix) format('embedded-opentype'),url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.woff2?2600305) format('woff2'),url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.woff?2600305) format('woff'),url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.ttf?2600305) format('truetype'),url(https://cdn01.gitter.im/_s/b962b3f01/fonts/fontello/font/fontello.svg?2600305#fontello) format('svg');}
+.trpChatContainer {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
 }

@@ -1,6 +1,6 @@
 .chatContainer{
-    display: grid;
-    grid-template-rows: auto 50px;
+    // display: grid;
+    // grid-template-rows: auto 50px;
 }
 
 
@@ -9,11 +9,12 @@
     bottom: 50px;
     top: 0px;
     width: 100%;
-    overflow-y: scroll;
+
 }
 
 .inputpanel{
      position: absolute;
      bottom: 5px;
+     width: 100%;
 
 }

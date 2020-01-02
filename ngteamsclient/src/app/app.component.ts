@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from './app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 import html2canvas from 'html2canvas';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SplitComponent, SplitAreaDirective } from 'angular-split';
 
 
 /*
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit {
     private sanitizer: DomSanitizer,
     public service: AppService,
     private snack: MatSnackBar,
+    private chooser: MatSelectModule,
   ){}
 
   ngOnInit() {
@@ -59,13 +62,14 @@ export class AppComponent implements OnInit {
   }
 
   async enterTeam(team) {
-    this.team = team;
+    this.team = team.value;
+    console.log(this.team.id);
 
-    this.channels = await this.service.getChannels(team.id);
+    this.channels = await this.service.getChannels(this.team.id);
   }
 
   async enterChannel(channel) {
-    this.channel = channel;
+    this.channel = channel.value;
   }
 
   toQuote(message) {
@@ -116,7 +120,8 @@ export class AppComponent implements OnInit {
 
   clearScreenshot() {
     document.querySelector('#screengrabContainer').innerHTML = '';
-    console.log('clear', document.querySelector('#screengrabContainer').innerHTML)
+    console.log('clear', document.querySelector('#screengrabContainer').innerHTML);
     this.selectedArea = [];
   }
+
 }

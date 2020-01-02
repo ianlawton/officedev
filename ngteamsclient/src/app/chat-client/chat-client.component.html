@@ -71,58 +71,62 @@
 
 <div class="trpChatContainer" *ngIf="messages" id="big">
   <ng-container *ngFor="let m of messages">
-<div class="chat-item burstStart burstFinal"><div class="chat-item__container">
-  <div class="chat-item__aside">
-    <div class="chat-item__avatar">
-      <span class="widget"><div class="trpDisplayPicture  avatar-s">
-  <!--<img src="https://avatars2.githubusercontent.com/u/25831758?v=4&amp;s=30" srcset="https://avatars2.githubusercontent.com/u/25831758?v=4&amp;s=60 2x" height="30" width="30" class="avatar__image" alt="">-->
-  <app-profile-picture class="profile" [upn]="m.from.user ? m.from.user.id : 'a71c79e8-cc00-4bf2-9724-a34ee37242a2'"></app-profile-picture>
-
-</div>
-</span>
-    </div>
-  </div>
-    <div class="chat-item__actions js-chat-item-actions" style="display: none;">
-      <i class="chat-item__icon icon-check chat-item__icon--read chat-item__icon--read-by-some js-chat-item-readby"></i>
-      <i class="chat-item__icon icon-ellipsis"></i>
-    </div>
-  <div class="chat-item__content">
-    <div class="chat-item__details">
-      <div class="chat-item__username js-chat-item-from" *ngIf="m.from.user">{{m.from.user.displayName}}</div>
-      <div class="chat-item__username js-chat-item-from" *ngIf="!m.from.user && m.from.application">{{m.from.application.displayName}}</div>
-      <div class="chat-item__username js-chat-item-from"  *ngIf="!m.from.user && !m.from.application">Unknown</div>
-      <a class="chat-item__time js-chat-time" href="https://gitter.im/angular/angular?at=5bad3f0beba8e60bc655b7b0" title="September 27, 2018 9:35 PM" data-disable-routing="true">{{m.createdDateTime | date:'EEEE HH:mm'}}</a>
-    </div>
-    <div class="chat-item__text js-chat-item-text">
-      <ng-container *ngIf="m.body.contentType === 'text' || (m.body.contentType === 'html' && !m.attachments.length) "><div [innerHTML]="m.body.content"></div></ng-container>
-      <ng-container *ngIf="m.body.contentType === 'html' && m.attachments.length > 0">
-        <ng-container *ngFor="let a of m.attachments">
-          <div [ngSwitch]="a.contentType">
-            <div *ngSwitchCase="'application/vnd.microsoft.card.thumbnail'">
-                <div *ngIf="inJSON(a.content).images"class="thumbnail">
-                  <img [src]="inJSON(a.content).images[0].url | safe" alt="">
-                </div>
-                <div [innerHTML]="inJSON(a.content).title"></div>
-                <div [innerHTML]="inJSON(a.content).subtitle"></div>
-                <div [innerHTML]="inJSON(a.content).text"></div>
-            </div>
-            // Adaptive Card
-            <div *ngSwitchCase="'application/vnd.microsoft.card.adaptive'">
-              <div [innerHTML]="parseCard(a.content)"></div>
-            </div>
-            // Older 0365 format
-            <div *ngSwitchCase="'application/vnd.microsoft.teams.card.o365connector'">
-                  <div [innerHTML]="inJSON(a.content).title"></div>
-                  <div [innerHTML]="inJSON(a.content).text"></div>
-            </div>
-            // Default
-            <div *ngSwitchDefault>{{a.content}}</div>
+    <div class="chat-item">
+      <div class="chat-item__container">
+        <div class="chat-item__aside">
+          <div class="chat-item__avatar">
+              <div class="trpDisplayPicture  avatar-s">
+                <!--<img src="https://avatars2.githubusercontent.com/u/25831758?v=4&amp;s=30" srcset="https://avatars2.githubusercontent.com/u/25831758?v=4&amp;s=60 2x" height="30" width="30" class="avatar__image" alt="">-->
+                <app-profile-picture class="profile"
+                  [upn]="m.from.user ? m.from.user.id : 'a71c79e8-cc00-4bf2-9724-a34ee37242a2'"></app-profile-picture>
+              </div>
+          </div>
+        </div>
+        <div class="chat-item__content">
+          <div>
+            <div class="chat-item__username" *ngIf="m.from.user">{{m.from.user.displayName}}</div>
+            <div class="chat-item__username" *ngIf="!m.from.user && m.from.application">
+              {{m.from.application.displayName}}</div>
+            <div class="chat-item__username" *ngIf="!m.from.user && !m.from.application">Unknown</div>
+            <a class="chat-item__time"
+              title="{{m.createdDateTime | date:'medium'}}">{{m.createdDateTime | date:'EEEE HH:mm'}}</a>
 
           </div>
-        </ng-container>
-      </ng-container>
-    </div>
+          <div class="chat-item__text">
+            <ng-container
+              *ngIf="m.body.contentType === 'text' || (m.body.contentType === 'html' && !m.attachments.length) ">
+              <div [innerHTML]="m.body.content"></div>
+            </ng-container>
+            <ng-container *ngIf="m.body.contentType === 'html' && m.attachments.length > 0">
+              <ng-container *ngFor="let a of m.attachments">
+                <div [ngSwitch]="a.contentType">
+                  <div *ngSwitchCase="'application/vnd.microsoft.card.thumbnail'">
+                    <div *ngIf="inJSON(a.content).images" class="thumbnail">
+                      <img [src]="inJSON(a.content).images[0].url | safe" alt="">
+                    </div>
+                    <div [innerHTML]="inJSON(a.content).title"></div>
+                    <div [innerHTML]="inJSON(a.content).subtitle"></div>
+                    <div [innerHTML]="inJSON(a.content).text"></div>
+                  </div>
+                  <!-- Adaptive Card-->
+                  <div *ngSwitchCase="'application/vnd.microsoft.card.adaptive'">
+                    <div [innerHTML]="parseCard(a.content)"></div>
+                  </div>
+                  <!-- Older 0365 format -->
+                  <div *ngSwitchCase="'application/vnd.microsoft.teams.card.o365connector'">
+                    <div [innerHTML]="inJSON(a.content).title"></div>
+                    <div [innerHTML]="inJSON(a.content).sections ? inJSON(a.content).sections[0].text : ''"></div>
+                  </div>
+                  <!-- Default -->
+                  <div *ngSwitchDefault>{{a.content}}</div>
 
-  </div>
-</div></div>
-</ng-container></div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

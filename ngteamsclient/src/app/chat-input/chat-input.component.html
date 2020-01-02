@@ -1,4 +1,4 @@
-<div class="inputContent" *ngIf="channel">
+<div *ngIf="channel">
   <form (submit)="send($event)">
     <div class="quote" *ngIf="quote">
       {{quote.body.content}}

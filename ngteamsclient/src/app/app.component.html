@@ -2,13 +2,29 @@
   *ngIf="selectingArea"
   class="selecting"
   (mousedown)="startSelect($event)"
-  (mouseup)="endSelect($event)"></div>
+  (mouseup)="endSelect($event)">
+</div>
 
 <mat-toolbar color="primary">
-  <span>MS Graph API PoC</span>
-
-  <div class="spacer"></div>
-
+  <span>MS Graph API PoC</span><div class="spacer"></div>
+  <div *ngIf="service.user$ | async">
+  <mat-form-field>
+    <mat-label>Teams: </mat-label>
+    <mat-select (selectionChange)="enterTeam($event)" >
+      <mat-option *ngFor="let c of teams" [value]="c">
+        {{c.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Channels: </mat-label>
+    <mat-select [disabled]="channels.length == 0" (selectionChange)="enterChannel($event)">
+      <mat-option *ngFor="let c of channels"  [value]="c">
+        {{c.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
   <ng-container *ngIf="!(service.user$ | async)">
     <button (click)="signIn()" mat-button>Sign in {{service.user$ | async}}</button>
   </ng-container>
@@ -26,29 +42,15 @@
 
 <h2 *ngIf="!(service.user$ | async)">You are not logged in</h2>
 
-<div class="content" *ngIf="service.user$ | async">
-  <div class="side">
-    <mat-list>
-      <h3 mat-subheader>Teams</h3>
-      <mat-list-item *ngFor="let c of teams" (click)="enterTeam(c)" [ngClass]="{'active-team': c === team}">
-        <mat-icon mat-list-icon>group</mat-icon>
-        <h4 mat-line>{{c.displayName}}</h4>
-        <p mat-line> {{c.description}} </p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <h3 mat-subheader *ngIf="channels.length">Channels</h3>
-      <mat-list-item *ngFor="let c of channels" (click)="enterChannel(c)" [ngClass]="{'active-team': c === channel}">
-          <mat-icon mat-list-icon>chat</mat-icon>
-          <h4 mat-line>{{c.displayName}}</h4>
-          <p mat-line> {{c.description}} </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div class="chat">
-    <app-chat-client class="messagepanel" [team]="team" [channel]="channel"></app-chat-client>
-    <app-chat-input class="inputpanel" [team]="team" [channel]="channel"></app-chat-input>
-  </div>
-
+<div *ngIf="service.user$ | async" class="mainContent">
+    <as-split unit="percent" gutterSize="5">
+        <as-split-area size="80">
+          <div class="mainpanel">Main window</div>
+        </as-split-area>
+        <as-split-area size="20">
+          <app-chat-panel [team]="team" [channel]="channel"></app-chat-panel>
+        </as-split-area>
+    </as-split>
 </div>
 
 

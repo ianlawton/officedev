@@ -1,13 +1,15 @@
 .reactions
 {
-    position:absolute;
-    right:0px;
-    top:0px;
+    display:inline;
     ul{
         right:0px;
         top:0px;
         li {
-            display:inline
+            display:inline;
+            img {
+                width: 10px;
+                height: 10px;
+            }
         }
     }
 }

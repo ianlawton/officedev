@@ -16,7 +16,7 @@ export class ProfilePictureComponent implements OnInit {
   }
 
  ngOnInit() {
-   console.log(this.upn);
+   this.profilePicture = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8d/LcfgAH+AMmBJXaVQAAAABJRU5ErkJggg==';
   }
 
   // tslint:disable-next-line: use-life-cycle-interface
@@ -28,7 +28,15 @@ export class ProfilePictureComponent implements OnInit {
 
   async GetProfilePicture() {
     const rawImage = await this.service.getProfilePicture(this.upn);
-    this.profilePicture = await this.service.createImageFromBlob(rawImage);
+    if (!rawImage) {
+      const user = await this.service.getUserByUPN(this.upn);
+      if (user) {
+        console.log(user);
+        this.profilePicture = this.service.getFallbackProfilePicture(user.mail, user.displayName);
+      }
+    } else {
+      this.profilePicture = await this.service.createImageFromBlob(rawImage);
+    }
 
   }
 

@@ -86,6 +86,25 @@ export class AppService {
     return user;
   }
 
+  async getUserByUPN(upn: string): Promise<any> {
+    // https://graph.microsoft.com/beta/users/{id}
+    const url = `/users/${upn}`;
+
+    try {
+      const user = await this.graphClient
+        .api(url)
+        .get();
+
+      return user;
+
+    } catch (ex) {
+      if (ex.statusCode && ex.statusCode === 404) {
+        return null;
+      }
+      throw ex;
+    }
+  }
+
   signOut(): void {
     this.msalService.logout();
     this.user$.next(undefined);
@@ -183,7 +202,12 @@ export class AppService {
 
       return blobData;
 
-    } catch { return 'Could be an error'; }
+    } catch (ex) {
+      if (ex.statusCode && ex.statusCode === 404) {
+        return null;
+      }
+      throw ex;
+    }
   }
 
   async createImageFromBlob(blob: Blob): Promise<any>  {
@@ -204,6 +228,12 @@ export class AppService {
     });
 
   }
+
+  //Very simple method to return the 'Initials' type of fallback graphic. Only gets the URL doesnt do a fetch
+  getFallbackProfilePicture(email: string, displayName: string): string {
+    return `https://teams.microsoft.com/api/mt/emea/beta/users/${email}/profilepicturev2?displayname=${displayName}&voidCache=true`;
+  }
+
 
   createMessageObj(content) {
     if ((typeof content === 'string' && content.startsWith('http://kepler') || typeof content !== 'string')) {
